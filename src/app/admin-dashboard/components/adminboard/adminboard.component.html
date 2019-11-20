@@ -1,0 +1,82 @@
+<div class="navbar">
+    <p>Username</p>
+</div>
+
+<!-- <div class="col-md-6 user-container">
+    <h2 style="margin: auto"> User Details</h2>
+    <button class="btn btn-danger" style="width:100px"> Add User</button>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th class="hidden">Id</th>
+        <th>Student Name</th>
+        <th>Course Join</th>
+        <th>Joining Date</th>
+        <th>End Date</th>
+        <th>Fees</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of users">
+        <td class="hidden"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><button class="btn btn-success"> Delete</button>
+          <button class="btn btn-success"  style="margin-left: 20px;"> Edit</button></td>
+      </tr>
+      </tbody>
+    </table>
+  </div> -->
+
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> StudentId </th>
+      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="studentName">
+      <th mat-header-cell *matHeaderCellDef> Student Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.studentName}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="courseJoin">
+      <th mat-header-cell *matHeaderCellDef> Course Join </th>
+      <td mat-cell *matCellDef="let element"> {{element.courseJoin}} </td>
+    </ng-container>
+
+    <!-- <ng-container matColumnDef="LoginId">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> UserId </th>
+        <td mat-cell *matCellDef="let row"> {{row.LoginId}} </td>
+      </ng-container> -->
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="joiningDate">
+      <th mat-header-cell *matHeaderCellDef> Joining Date </th>
+      <td mat-cell *matCellDef="let element"> {{element.joiningDate}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="endingDate">
+        <th mat-header-cell *matHeaderCellDef> End Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.endingDate}} </td>
+      </ng-container>
+
+    <!-- <ng-container matColumnDef="Actions">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+        <td mat-cell *matCellDef="let row">
+          <a><mat-icon class="ph-list-icon">edit</mat-icon></a>
+          <a><mat-icon class="ph-list-icon" >delete</mat-icon></a>  
+        </td>
+      </ng-container> -->
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+

@@ -1,0 +1,33 @@
+<mat-card>
+    <mat-card-content>
+
+        <div class="example-container">
+  <mat-form-field>
+    <input matInput placeholder="Input">
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput placeholder="Textarea"></textarea>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Select">
+      <mat-option value="option">Option</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+       
+
+
+
+      <div style="width: 90%;
+      margin-top: 20px;
+      margin-left: 5%;margin-bottom: 20px; margin-right: 5%">
+        <mat-spinner-button  (onClickFunc)="onCreateUser()"
+          [options]="createUserButtonOpts"></mat-spinner-button >
+        <mat-spinner-button  (onClickFunc)="OnCancelUser()" class="margin-left"
+          [options]="cancelButtonOpts"></mat-spinner-button >
+      </div>  
+      <div style="clear: both;"></div>
+    </mat-card-content>
+  </mat-card>
