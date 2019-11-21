@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
 import { MatProgressButtonOptions } from 'mat-progress-buttons';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'add-user',
@@ -27,7 +28,7 @@ export class AddUserComponent implements OnInit {
     fab: false,};
 
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }

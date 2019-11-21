@@ -1,82 +1,150 @@
 <div class="navbar">
-    <p>Username</p>
+  <p>Username</p>
 </div>
 
-<!-- <div class="col-md-6 user-container">
-    <h2 style="margin: auto"> User Details</h2>
-    <button class="btn btn-danger" style="width:100px"> Add User</button>
-    <table class="table table-striped">
-      <thead>
-      <tr>
-        <th class="hidden">Id</th>
-        <th>Student Name</th>
-        <th>Course Join</th>
-        <th>Joining Date</th>
-        <th>End Date</th>
-        <th>Fees</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let user of users">
-        <td class="hidden"></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><button class="btn btn-success"> Delete</button>
-          <button class="btn btn-success"  style="margin-left: 20px;"> Edit</button></td>
-      </tr>
-      </tbody>
-    </table>
-  </div> -->
+<!-- add user -->
+<ng-template #mytemplate>
+  <mat-card>
+    <mat-card-content>
+
+      <div class="example-container">
+        <mat-form-field>
+          <input matInput placeholder="Student Name" [(ngModel)]="name">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-select placeholder="Select" [(ngModel)]="course">
+            <mat-option value="C">C</mat-option>
+            <mat-option value="Cpp">C++</mat-option>
+            <mat-option value="JAVA">JAVA</mat-option>
+            <mat-option value="PHP">PHP</mat-option>
+
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="joining Date" [(ngModel)]="joinDate">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Ending Date" [(ngModel)]="endDate">
+        </mat-form-field>
+
+      </div>
+
+      <!-- <div style="width: 90%;
+    margin-top: 20px;
+    margin-left: 5%;margin-bottom: 20px; margin-right: 5%"> -->
+      <!-- <mat-spinner-button  [options]="createUserButtonOpts"></mat-spinner-button>
+          <mat-spinner-button  (click)="closeDialog()" class="margin-left" [options]="cancelButtonOpts">
+          </mat-spinner-button> -->
+
+      <div mat-dialog-actions>
+        <button mat-button (click)="onNoClick()">close</button>
+        <button mat-button [mat-dialog-close]="name" cdkFocusInitial>Ok</button>
+      </div>
+      <!-- </div> -->
+      <div style="clear: both;"></div>
+    </mat-card-content>
+  </mat-card>
+</ng-template>
+
+<!-- end -->
 
 
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<!-- try -->
+<!-- <table>
+ <tr>
+   <td>{{name}}</td>
+   <td>{{course}}</td>
+   <td>{{joinDate}}</td>
+   <td>{{endDate}}</td>
+ </tr>
+</table> -->
+
+<!-- end -->
+
+
+
+
+
+<div>
+  <button (click)="OnAddButtonClicked(mytemplate)">Add User</button>
+  <button (click)="OnSearchButtonClicked()">Search User</button>
+
+
+</div>
+
+<table>
+  <tr>
+    <th>student name</th>
+    <th>Course Join</th>
+    <th>Join Date</th>
+    <th>End Date</th>
+  </tr>
+  <tr>
+    <td>{{name}}</td>
+    <td>{{course}}</td>
+    <td>{{joinDate}}</td>
+    <td>{{endDate}}</td>
+    <td>
+      <a>
+        <mat-icon class="ph-list-icon">edit</mat-icon>
+      </a>
+      <a>
+        <mat-icon class="ph-list-icon">delete</mat-icon>
+      </a>
+    </td>
+  </tr>
+</table>
+
+
+
+
+
+<!-- <table mat-table [dataSource]="dataSource" class="mat-elevation-z8"> -->
+
+
+<!-- <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef> StudentId </th>
+    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+  </ng-container>
+
   
-    <!-- Position Column -->
-    <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef> StudentId </th>
-      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-    </ng-container>
-  
-    <!-- Name Column -->
-    <ng-container matColumnDef="studentName">
-      <th mat-header-cell *matHeaderCellDef> Student Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.studentName}} </td>
-    </ng-container>
-  
-    <!-- Weight Column -->
-    <ng-container matColumnDef="courseJoin">
-      <th mat-header-cell *matHeaderCellDef> Course Join </th>
-      <td mat-cell *matCellDef="let element"> {{element.courseJoin}} </td>
-    </ng-container>
+  <ng-container matColumnDef="studentName">
+    <th mat-header-cell *matHeaderCellDef> Student Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.studentName}} </td>
+  </ng-container>
 
-    <!-- <ng-container matColumnDef="LoginId">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> UserId </th>
-        <td mat-cell *matCellDef="let row"> {{row.LoginId}} </td>
-      </ng-container> -->
-  
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="joiningDate">
-      <th mat-header-cell *matHeaderCellDef> Joining Date </th>
-      <td mat-cell *matCellDef="let element"> {{element.joiningDate}} </td>
-    </ng-container>
+ 
+  <ng-container matColumnDef="courseJoin">
+    <th mat-header-cell *matHeaderCellDef> Course Join </th>
+    <td mat-cell *matCellDef="let element"> {{element.courseJoin}} </td>
+  </ng-container>
 
-    <ng-container matColumnDef="endingDate">
-        <th mat-header-cell *matHeaderCellDef> End Date </th>
-        <td mat-cell *matCellDef="let element"> {{element.endingDate}} </td>
-      </ng-container>
+ 
+  <ng-container matColumnDef="joiningDate">
+    <th mat-header-cell *matHeaderCellDef> Joining Date </th>
+    <td mat-cell *matCellDef="let element"> {{element.joiningDate}} </td>
+  </ng-container>
 
-    <!-- <ng-container matColumnDef="Actions">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
-        <td mat-cell *matCellDef="let row">
-          <a><mat-icon class="ph-list-icon">edit</mat-icon></a>
-          <a><mat-icon class="ph-list-icon" >delete</mat-icon></a>  
-        </td>
-      </ng-container> -->
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+  <ng-container matColumnDef="endingDate">
+    <th mat-header-cell *matHeaderCellDef> End Date </th>
+    <td mat-cell *matCellDef="let element"> {{element.endingDate}} </td>
+  </ng-container>
 
+  <ng-container matColumnDef="Actions">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+    <td mat-cell *matCellDef="let row">
+      <a>
+        <mat-icon class="ph-list-icon">edit</mat-icon>
+      </a>
+      <a>
+        <mat-icon class="ph-list-icon">delete</mat-icon>
+      </a>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table> -->

@@ -15,6 +15,7 @@ import { AddUserComponent } from './admin-dashboard/components/add-user/add-user
 import { AdminDashboardComponent } from './admin-dashboard/pages/admin-dashboard/admin-dashboard.component';
 import { MatProgressButtonsModule } from 'mat-progress-buttons';
 import { AddButtonComponent } from './admin-dashboard/components/add-button/add-button.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { AddButtonComponent } from './admin-dashboard/components/add-button/add-
     MatIconModule,
     ReactiveFormsModule,
     FormsModule,
-    MatProgressButtonsModule
+    MatProgressButtonsModule,
+    MatDialogModule
     
   ],
   exports: [
